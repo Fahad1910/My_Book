@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+
+{%block body_block%}
+
+<h1 class="text-center mb-4">Book Details</h1>
+
+<div class="container d-flex justify-content-center">
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-header text-info">Book Details</div>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{data.book_name}}</li>
+          <li class="list-group-item">{{data.author_name}}</li>
+          <li class="list-group-item">{{data.price}}</li>
+          <li class="list-group-item">{{data.pages}}</li>
+        </ul>
+      </div>
+
+
+</div>
+
+{%endblock%}
