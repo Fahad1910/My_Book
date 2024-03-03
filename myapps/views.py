@@ -12,7 +12,7 @@ class CreateBookView(View):
         return render(request,"book_add.html",{"form":form})
 
     def post(self,request,*args,**kwargs):
-        form=BookModelForm(request.POST)
+        form=BookModelForm(request.POST,files=request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request,"Book has been created")
@@ -61,7 +61,7 @@ class BookUpdateView(View):
     def post(self,request,*args,**kwargs):
         id=kwargs.get("pk")
         obj=Books.objects.get(id=id)
-        form=BookModelForm(request.POST,instance=obj)
+        form=BookModelForm(request.POST,instance=obj,files=request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request,"changes has been applied")

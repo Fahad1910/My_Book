@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from myapps import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +27,5 @@ urlpatterns = [
     path('book/<int:pk>',views.BookDetailView.as_view(),name="book-details"),
     path('book/<int:pk>/remove',views.BookDeleteView.as_view(),name="book-delete"),
     path('book/<int:pk>/change',views.BookUpdateView.as_view(),name="book-edit"),
-]
+
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
